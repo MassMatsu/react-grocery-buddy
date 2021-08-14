@@ -2,7 +2,7 @@ import React from 'react';
 
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
-const List = ({ items, onItemRemove }) => {
+const List = ({ items, onItemEdit, onItemRemove }) => {
   console.log(items);
 
   return (
@@ -14,7 +14,7 @@ const List = ({ items, onItemRemove }) => {
               <li className='item' key={item.id}>
                 {item.name}
                 <div className='btn-box'>
-                  <button className='btn btn--edit' >
+                  <button className='btn btn--edit' onClick={() => onItemEdit(item.id)}>
                     <FaEdit />
                   </button>
                   <button className='btn btn--trash' onClick={() => onItemRemove(item.id)}>
