@@ -267,7 +267,7 @@ input::placeholder {
   }
 
   .msg {
-    font-size: 1rem;
+    font-size: 1.6rem;
     font-weight: 500;
     padding: 0.5rem 0;
     letter-spacing: 0.25rem;
@@ -280,7 +280,7 @@ input::placeholder {
     margin-bottom: 2rem;
   }
   .input {
-    font-size: 1rem;
+    font-size: 1.6rem;
     letter-spacing: 0.1rem;
   }
   .form {
@@ -290,25 +290,25 @@ input::placeholder {
     margin-bottom: 2.4rem;
   }
   .btn--submit {
-    font-size: 1rem;
+    font-size: 1.6rem;
     letter-spacing: 0.25rem;
     padding: 1rem 0;
   }
   .item {
-    font-size: 1rem;
+    font-size: 1.4rem;
     padding: 1rem 0.5rem;
   }
   .btn-box {
     gap: 1.2rem;
   }
   .btn {
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
   .btn--trash {
-    font-size: 0.9rem;
+    font-size: 1.3rem;
   }
   .btn--clear {
-    font-size: 1rem;
+    font-size: 1.6rem;
     padding: 0.7rem 1.4rem;
   }
 }
