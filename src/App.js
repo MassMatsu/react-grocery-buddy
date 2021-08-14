@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import List from './components/List';
 import Form from './components/Form';
 import BtnClearAll from './components/BtnClearAll';
+import Alert from './components/Alert'
 
 import uuid from 'react-uuid';
+
 
 const App = () => {
   const [item, setItem] = useState('');
@@ -11,6 +13,9 @@ const App = () => {
 
   const [editMode, setEditMode] = useState(false);
   const [editingItemID, setEditingItemID] = useState('');
+
+  const [alert, setAlert] = useState({show: true, msg: '', type: ''})
+
 
   console.log(item);
 
@@ -29,13 +34,14 @@ const App = () => {
       setList(newList);
       setEditMode(false);
       setEditingItemID('');
-
+      setUpAlert(true, 'Item edited', 'edited')
     } else {
       const newItem = {
         id: uuid(),
         name: item,
       };
       setList([...list, newItem]);
+      setUpAlert(true, 'Item added', 'added')
     }
 
     setItem('');
@@ -57,18 +63,35 @@ const App = () => {
     const newList = list.filter((item) => item.id !== itemToRemove.id);
 
     setList(newList);
+    setUpAlert(true, 'Item removed', 'removed')
   };
 
   const onAllClear = function () {
+    if (!list.length > 0) return
     setList([]);
+    setUpAlert(true, 'All items removed', 'removed')
   };
+
+  const setUpAlert = function(show = false, msg = '', type = '') {
+    setAlert({show, msg, type})
+  }
+
+  console.log(alert.show)
 
   return (
     <div className='container'>
-      <p className='msg'>Item added</p>
+      <div className="info-box">
+        <Alert alert={alert} setUpAlert={setUpAlert} list={list}/>
+      </div>
+
       <h1 className='title'>Grocery Buddy</h1>
 
-      <Form item={item} onFormSubmit={onFormSubmit} setItem={setItem} editMode={editMode}/>
+      <Form
+        item={item}
+        onFormSubmit={onFormSubmit}
+        setItem={setItem}
+        editMode={editMode}
+      />
 
       <List items={list} onItemEdit={onItemEdit} onItemRemove={onItemRemove} />
 
