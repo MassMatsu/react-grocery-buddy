@@ -200,7 +200,7 @@ input::placeholder {
   align-items: center;
 }
 
-.item.active {
+.item.selected {
   color: #c92a2a;
 }
 

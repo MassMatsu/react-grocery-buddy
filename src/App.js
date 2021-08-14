@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState} from 'react';
 import List from './components/List';
 import Form from './components/Form';
 import BtnClearAll from './components/BtnClearAll';
@@ -80,11 +80,13 @@ const App = () => {
 
   return (
     <div className='container'>
-      <div className="info-box">
-        <Alert alert={alert} setUpAlert={setUpAlert} list={list}/>
+      <div className='info-box'>
+        <Alert alert={alert} setUpAlert={setUpAlert} list={list} />
       </div>
 
-      <h1 className='title'>Grocery Buddy</h1>
+      <h1 className='title'>
+        Grocery Buddy
+      </h1>
 
       <Form
         item={item}
@@ -93,7 +95,7 @@ const App = () => {
         editMode={editMode}
       />
 
-      <List items={list} onItemEdit={onItemEdit} onItemRemove={onItemRemove} />
+      <List items={list} onItemEdit={onItemEdit} onItemRemove={onItemRemove}/>
 
       <BtnClearAll onAllClear={onAllClear} />
     </div>

@@ -2,8 +2,13 @@ import React from 'react';
 
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
-const List = ({ items, onItemEdit, onItemRemove }) => {
+const List = ({ items, onItemEdit, onItemRemove}) => {
   console.log(items);
+
+  const toggleColor = function (e) {
+    const targetEl = e.target.closest('.item');
+    targetEl.classList.toggle('selected');
+  };
 
   return (
     <div className='list-box'>
@@ -12,7 +17,7 @@ const List = ({ items, onItemEdit, onItemRemove }) => {
           items.map((item) => {
             return (
               <li className='item' key={item.id}>
-                {item.name}
+                <span onClick={toggleColor}>{item.name}</span>
                 <div className='btn-box'>
                   <button className='btn btn--edit' onClick={() => onItemEdit(item.id)}>
                     <FaEdit />
@@ -28,42 +33,5 @@ const List = ({ items, onItemEdit, onItemRemove }) => {
     </div>
   );
 };
-
-// return (
-//   <div className='list-box'>
-//     <ul className='list'>
-//     </ul>
-//   </div>
-// );
-
-/*
-<div className='list-box'>
-      <ul className='list'>
-         <li className='item'>
-          tomato
-          <div className='btn-box'>
-            <button className='btn btn--edit'>
-              <FaEdit />
-            </button>
-            <button className='btn btn--trash'>
-              <FaTrash />
-            </button>
-          </div>
-        </li>
-        <li className='item'>
-          tomato
-          <div className='btn-box'>
-            <button className='btn btn--edit'>
-              <FaEdit />
-            </button>
-            <button className='btn btn--trash'>
-              <FaTrash />
-            </button>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-*/
 
 export default List;
