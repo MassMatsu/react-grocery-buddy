@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+import { FaEdit, FaTrash } from 'react-icons/fa';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <h1 className='title'>Grocery Buddy</h1>
+      <form className='form'>
+        <input className='input' type='text' placeholder='e.g. たまご' />
+        <button className='btn--submit'>Submit</button>
+      </form>
+      <div className='list-box'>
+        <ul className='list'>
+          <li className='item'>
+            tomato
+            <div className='btn-box'>
+              <button className='btn btn--edit'>
+                <FaEdit />
+              </button>
+              <button className='btn btn--trash'>
+                <FaTrash />
+              </button>
+            </div>
+          </li>
+          <li className='item'>
+            tomato
+            <div className='btn-box'>
+              <button className='btn btn--edit'>
+                <FaEdit />
+              </button>
+              <button className='btn btn--trash'>
+                <FaTrash />
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div className='btn-box--clear'>
+        <button className='btn btn--clear'>Clear All</button>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
