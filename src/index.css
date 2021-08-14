@@ -25,9 +25,9 @@ Paragraph default: 1.6
 
 --- 02 COLOURS
 
-- Primary: #e67e22
-- Tints: #fdf2e9 #fae5d3
-- Shades: #cf711f
+- Primary:#a5d8ff #00ff00 #c92a2a
+- Tints:  #66ff66 #fa5252
+- Shades: #74c0fc
 - Accents:
 - Greys
 #555
@@ -79,13 +79,18 @@ body {
   border-radius: 9px;
 }
 
+.info-box {
+  height: 3rem;
+  margin-bottom: 2rem;
+}
+
 .msg {
   font-size: 2rem;
   font-weight: 500;
   padding: 0.5rem 0;
   letter-spacing: 0.5rem;
   text-align: center;
-  margin-bottom: 2rem;
+  
   border-radius: 5px;
   transition: all 0.3s;
 
@@ -104,10 +109,16 @@ body {
   background-color: rgb(102, 255, 102, 0.2);
 }
 
-.msg.deleted {
+.msg.removed {
   visibility: visible;
   color: #c92a2a;
   background-color: rgb(250, 82, 82, 0.2);
+}
+
+.icon {
+  font-size: 4rem;
+  /* color: #009900; */
+  color: #d45555;
 }
 
 .title {
@@ -149,11 +160,11 @@ input::placeholder {
   cursor: pointer;
 }
 
-.btn--submit.edited {
+.btn--submit.edit {
   background-color: #66ff66;
 }
 
-.btn--submit.edited:hover {
+.btn--submit.edit:hover {
   background-color: #00ff00;
 }
 
@@ -181,6 +192,7 @@ input::placeholder {
 .item {
   padding: 1.2rem 0;
   text-transform: capitalize;
+  font-weight: 400;
   letter-spacing: 0.5rem;
 
   display: flex;
@@ -188,7 +200,7 @@ input::placeholder {
   align-items: center;
 }
 
-.item.active {
+.item.selected {
   color: #c92a2a;
 }
 
@@ -245,8 +257,13 @@ input::placeholder {
 
 @media screen and (max-width: 767px) {
   .container {
-    padding: 2rem 3.2rem 4.8rem 3.2rem;
-    margin-top: 5rem;
+    padding: 1.5rem 3.2rem 4.8rem 3.2rem;
+    margin-top: 3rem;
+  }
+
+  .info-box {
+    height: 2rem;
+    margin-bottom: 1rem;
   }
 
   .msg {
@@ -254,7 +271,6 @@ input::placeholder {
     font-weight: 500;
     padding: 0.5rem 0;
     letter-spacing: 0.25rem;
-    margin-bottom: 1rem;
   }
 
   .title {
