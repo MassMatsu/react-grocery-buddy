@@ -29,7 +29,7 @@ const App = () => {
       setList(newList);
       setEditMode(false);
       setEditingItemID('');
-      
+
     } else {
       const newItem = {
         id: uuid(),
@@ -68,7 +68,7 @@ const App = () => {
       <p className='msg'>Item added</p>
       <h1 className='title'>Grocery Buddy</h1>
 
-      <Form item={item} onFormSubmit={onFormSubmit} setItem={setItem} />
+      <Form item={item} onFormSubmit={onFormSubmit} setItem={setItem} editMode={editMode}/>
 
       <List items={list} onItemEdit={onItemEdit} onItemRemove={onItemRemove} />
 

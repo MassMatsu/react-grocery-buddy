@@ -149,11 +149,11 @@ input::placeholder {
   cursor: pointer;
 }
 
-.btn--submit.edited {
+.btn--submit.edit {
   background-color: #66ff66;
 }
 
-.btn--submit.edited:hover {
+.btn--submit.edit:hover {
   background-color: #00ff00;
 }
 

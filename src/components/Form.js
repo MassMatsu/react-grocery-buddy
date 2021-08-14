@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const Form = ({item, onFormSubmit, setItem}) => {
+const Form = ({item, onFormSubmit, setItem, editMode}) => {
 
   return (
     <form className='form' onSubmit={onFormSubmit}>
@@ -12,9 +12,11 @@ const Form = ({item, onFormSubmit, setItem}) => {
         onChange={(e) => setItem(e.target.value)}
         value={item}
       />
-      <button className='btn--submit'>Submit</button>
+      <button className={editMode ? 'btn--submit edit' : 'btn--submit'}>
+        {editMode ? 'Edit' : 'Submit'}
+      </button>
     </form>
-  )
+  );
 }
 
 export default Form
