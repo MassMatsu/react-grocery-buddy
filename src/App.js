@@ -1,46 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import List from './components/List';
+import Form from './components/Form';
+import BtnClearAll from './components/BtnClearAll'
 
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import uuid from 'react-uuid'
 
 const App = () => {
+  const [item, setItem] = useState('');
+  const [list, setList] = useState([]);
+
+  console.log(item);
+
+  const onFormSubmit = function(e) {
+    e.preventDefault();
+
+    if (!item) return;
+
+    const newItem = {
+      id: uuid(),
+      name: item,
+    };
+    setList([...list, newItem]);
+    setItem('');
+  };
+
+  const onItemRemove = function(id) {
+    const itemToRemove = list.find((item) => item.id === id)
+    if (!itemToRemove) return
+
+    const newList = list.filter((item) => item.id !== itemToRemove.id)
+
+    setList(newList)
+  }
+
+  const onAllClear = function() {
+    setList([])
+  }
+
+
   return (
     <div className='container'>
-      <p className="msg added">Item added</p>
+      <p className='msg'>Item added</p>
       <h1 className='title'>Grocery Buddy</h1>
-      <form className='form'>
-        <input className='input' type='text' placeholder='e.g. たまご' />
-        <button className='btn--submit'>Submit</button>
-      </form>
-      <div className='list-box'>
-        <ul className='list'>
-          <li className='item'>
-            tomato
-            <div className='btn-box'>
-              <button className='btn btn--edit'>
-                <FaEdit />
-              </button>
-              <button className='btn btn--trash'>
-                <FaTrash />
-              </button>
-            </div>
-          </li>
-          <li className='item'>
-            tomato
-            <div className='btn-box'>
-              <button className='btn btn--edit'>
-                <FaEdit />
-              </button>
-              <button className='btn btn--trash'>
-                <FaTrash />
-              </button>
-            </div>
-          </li>
-        </ul>
-      </div>
 
-      <div className='btn-box--clear'>
-        <button className='btn btn--clear'>Clear All</button>
-      </div>
+      <Form item={item} onFormSubmit={onFormSubmit} setItem={setItem} />
+
+      <List items={list} onItemRemove={onItemRemove} />
+
+      <BtnClearAll onAllClear={onAllClear} />
     </div>
   );
 };

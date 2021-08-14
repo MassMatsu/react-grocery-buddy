@@ -25,9 +25,9 @@ Paragraph default: 1.6
 
 --- 02 COLOURS
 
-- Primary: #e67e22
-- Tints: #fdf2e9 #fae5d3
-- Shades: #cf711f
+- Primary:#a5d8ff #00ff00 #c92a2a
+- Tints:  #66ff66 #fa5252
+- Shades: #74c0fc
 - Accents:
 - Greys
 #555
@@ -181,6 +181,7 @@ input::placeholder {
 .item {
   padding: 1.2rem 0;
   text-transform: capitalize;
+  font-weight: 400;
   letter-spacing: 0.5rem;
 
   display: flex;
@@ -245,8 +246,8 @@ input::placeholder {
 
 @media screen and (max-width: 767px) {
   .container {
-    padding: 2rem 3.2rem 4.8rem 3.2rem;
-    margin-top: 5rem;
+    padding: 1.5rem 3.2rem 4.8rem 3.2rem;
+    margin-top: 3rem;
   }
 
   .msg {
