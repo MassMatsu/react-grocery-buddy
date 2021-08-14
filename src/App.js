@@ -5,6 +5,7 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 const App = () => {
   return (
     <div className='container'>
+      <p className="msg added">Item added</p>
       <h1 className='title'>Grocery Buddy</h1>
       <form className='form'>
         <input className='input' type='text' placeholder='e.g. たまご' />
