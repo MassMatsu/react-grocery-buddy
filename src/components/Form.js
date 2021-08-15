@@ -1,8 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-
-const Form = ({item, onFormSubmit, setItem, editMode}) => {
-
+const Form = ({ item, onFormSubmit, setItem, editMode }) => {
   return (
     <form className='form' onSubmit={onFormSubmit}>
       <input
@@ -17,6 +15,6 @@ const Form = ({item, onFormSubmit, setItem, editMode}) => {
       </button>
     </form>
   );
-}
+};
 
-export default Form
+export default Form;
