@@ -1,8 +1,9 @@
 import React, { useState, useCallback, useEffect} from 'react';
 import List from './components/List';
 import Form from './components/Form';
-import BtnClearAll from './components/BtnClearAll';
+import BtnHandleAll from './components/BtnHandleAll';
 import Alert from './components/Alert'
+
 
 import uuid from 'react-uuid';
 // import { FaShoppingCart, FaShoppingBag, FaHeart } from 'react-icons/fa';
@@ -85,11 +86,20 @@ const App = () => {
     setUpAlert(true, 'All items removed', 'removed')
   };
 
+  const onAllSelect = function () {
+    const items = document.querySelectorAll('.item')
+
+    items.forEach((item) => {
+      item.classList.add('selected')
+      console.log(item.classList)
+    })
+  }
+
+
   const setUpAlert = function(show = false, msg = '', type = '') {
     setAlert({show, msg, type})
   }
 
-  console.log(list)
 
   return (
     <div className='container'>
@@ -110,7 +120,10 @@ const App = () => {
 
       <List items={list} onItemEdit={onItemEdit} onItemRemove={onItemRemove}/>
 
-      <BtnClearAll onAllClear={onAllClear} />
+      
+      <BtnHandleAll onAllClear={onAllClear} onAllSelect={onAllSelect}/>
+
+
     </div>
   );
 };
