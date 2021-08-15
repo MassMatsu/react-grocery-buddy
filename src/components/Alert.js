@@ -1,8 +1,7 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react';
 
-
-const Alert = ({alert, setUpAlert, list}) => {
-  const {show, msg, type} = alert
+const Alert = ({ alert, setUpAlert, list }) => {
+  const { show, msg, type } = alert;
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -10,11 +9,9 @@ const Alert = ({alert, setUpAlert, list}) => {
     }, 1500);
     return () => clearTimeout(timeout);
     // eslint-disable-next-line
-  }, [list])
+  }, [list]);
 
-  return (
-    <p className={show ? `msg ${type}` : 'msg'}>{msg}</p>
-  );
-}
+  return <p className={show ? `msg ${type}` : 'msg'}>{msg}</p>;
+};
 
-export default Alert
+export default Alert;
