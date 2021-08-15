@@ -1,4 +1,4 @@
-import React, { useState, useCallback} from 'react';
+import React, { useState, useCallback, useEffect} from 'react';
 import List from './components/List';
 import Form from './components/Form';
 import BtnClearAll from './components/BtnClearAll';
@@ -8,16 +8,29 @@ import uuid from 'react-uuid';
 // import { FaShoppingCart, FaShoppingBag, FaHeart } from 'react-icons/fa';
 
 const App = () => {
+  const loadList = function () {
+    let itemList = localStorage.getItem('list');
+
+    return itemList ? JSON.parse(itemList) : [];
+  };
+
   const [item, setItem] = useState('');
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(loadList());
 
   const [editMode, setEditMode] = useState(false);
   const [editingItemID, setEditingItemID] = useState('');
 
   const [alert, setAlert] = useState({show: true, msg: '', type: ''})
 
+  const setStorage = function (list) {
+    localStorage.setItem('list', JSON.stringify(list));
+    console.log(list);
+  };
 
-  console.log(item);
+  useEffect(() => {
+    setStorage(list)
+  }, [list])
+
 
   const onFormSubmit = function (e) {
     e.preventDefault();
@@ -75,6 +88,8 @@ const App = () => {
   const setUpAlert = function(show = false, msg = '', type = '') {
     setAlert({show, msg, type})
   }
+
+  console.log(list)
 
   return (
     <div className='container'>
