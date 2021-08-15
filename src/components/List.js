@@ -2,12 +2,13 @@ import React from 'react';
 
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
-const List = ({ items, onItemEdit, onItemRemove}) => {
+const List = React.memo(({ items, onItemEdit, onItemRemove}) => {
   console.log(items);
 
-  const toggleColor = function (e) {
-    const targetEl = e.target.closest('.item');
-    targetEl.classList.toggle('selected');
+  const toggleColor = function (e) { 
+    const targetEl = (e.target.classList.contains('itemName') && e.target.parentNode) || (e.target.classList.contains('item') && e.target)
+
+    if (targetEl) targetEl.classList.toggle('selected');
   };
 
   return (
@@ -16,14 +17,22 @@ const List = ({ items, onItemEdit, onItemRemove}) => {
         {items.length > 0 &&
           items.map((item) => {
             return (
-              <li className='item' key={item.id}>
-                <span onClick={toggleColor}>{item.name}</span>
+              <li className='item' key={item.id}onClick={toggleColor}>
+                <span className='itemName' >
+                  {item.name}
+                </span>
                 <div className='btn-box'>
-                  <button className='btn btn--edit' onClick={() => onItemEdit(item.id)}>
-                    <FaEdit />
+                  <button
+                    className='btn btn--edit'
+                    onClick={() => onItemEdit(item.id)}
+                  >
+                    <FaEdit className="btn" />
                   </button>
-                  <button className='btn btn--trash' onClick={() => onItemRemove(item.id)}>
-                    <FaTrash />
+                  <button
+                    className='btn btn--trash'
+                    onClick={() => onItemRemove(item.id)}
+                  >
+                    <FaTrash className="btn" />
                   </button>
                 </div>
               </li>
@@ -32,6 +41,6 @@ const List = ({ items, onItemEdit, onItemRemove}) => {
       </ul>
     </div>
   );
-};
+});
 
 export default List;

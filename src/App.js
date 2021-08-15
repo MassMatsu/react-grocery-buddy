@@ -1,11 +1,11 @@
-import React, { useState} from 'react';
+import React, { useState, useCallback} from 'react';
 import List from './components/List';
 import Form from './components/Form';
 import BtnClearAll from './components/BtnClearAll';
 import Alert from './components/Alert'
 
 import uuid from 'react-uuid';
-
+import { FaShoppingCart, FaShoppingBag, FaHeart } from 'react-icons/fa';
 
 const App = () => {
   const [item, setItem] = useState('');
@@ -47,16 +47,16 @@ const App = () => {
     setItem('');
   };
 
-  const onItemEdit = function (id) {
+  const onItemEdit = useCallback(function (id) {
     const itemToEdit = list.find((item) => item.id === id);
     if (!itemToEdit) return;
 
     console.log(id);
     setEditMode(true);
     setEditingItemID(id);
-  };
+  }, [list]);
 
-  const onItemRemove = function (id) {
+  const onItemRemove = useCallback(function (id) {
     const itemToRemove = list.find((item) => item.id === id);
     if (!itemToRemove) return;
 
@@ -64,7 +64,7 @@ const App = () => {
 
     setList(newList);
     setUpAlert(true, 'Item removed', 'removed')
-  };
+  }, [list]);
 
   const onAllClear = function () {
     if (!list.length > 0) return
@@ -75,8 +75,6 @@ const App = () => {
   const setUpAlert = function(show = false, msg = '', type = '') {
     setAlert({show, msg, type})
   }
-
-  console.log(alert.show)
 
   return (
     <div className='container'>

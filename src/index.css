@@ -200,8 +200,10 @@ input::placeholder {
   align-items: center;
 }
 
-.item.selected {
+.item.selected .itemName {
   color: #c92a2a;
+  font-weight: 600;
+  background: linear-gradient(transparent 50%, #e6baba 50%);
 }
 
 .btn-box {
@@ -257,8 +259,11 @@ input::placeholder {
 }
 
 @media screen and (max-width: 767px) {
+  body {
+    padding: 0 2.4rem;
+  }
   .container {
-    padding: 1.5rem 2.4rem 4.8rem 2.4rem;
+    padding: 1.5rem 2rem 3.2rem 2rem;
     margin-top: 3rem;
   }
 
@@ -289,16 +294,17 @@ input::placeholder {
     margin-bottom: 2.4rem;
   }
   .list-box {
-    margin-bottom: 2.4rem;
+    margin-bottom: 3.2rem;
   }
   .btn--submit {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     letter-spacing: 0.25rem;
     padding: 0.7rem 1rem;
   }
   .item {
     font-size: 1.4rem;
-    padding: 1rem 0.5rem;
+    letter-spacing: 0.25rem;
+    padding: 0.75rem 0.25rem;
   }
   /* .btn-box {
     gap: 1.2rem;
@@ -313,7 +319,12 @@ input::placeholder {
     font-size: 1.3rem;
   }
   .btn--clear {
-    font-size: 1.6rem;
-    padding: 0.7rem 1.4rem;
+    font-size: 1rem;
+    color: #c92a2a;
+    padding: 0.5rem 1rem;
+    letter-spacing: 0.25rem;
+
+    border: none;
+
   }
 }
