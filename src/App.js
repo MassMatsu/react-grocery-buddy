@@ -5,7 +5,7 @@ import BtnClearAll from './components/BtnClearAll';
 import Alert from './components/Alert'
 
 import uuid from 'react-uuid';
-import { FaShoppingCart, FaShoppingBag, FaHeart } from 'react-icons/fa';
+// import { FaShoppingCart, FaShoppingBag, FaHeart } from 'react-icons/fa';
 
 const App = () => {
   const [item, setItem] = useState('');
