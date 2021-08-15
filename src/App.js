@@ -25,10 +25,10 @@ const App = () => {
     if (!item) return;
 
     if (editMode) {
-      const newList = list.map((i) => {
-        if (i.id === editingItemID) i.name = item;
+      const newList = list.map((itm) => {
+        if (itm.id === editingItemID) itm.name = item;
 
-        return i;
+        return itm;
       });
 
       setList(newList);
